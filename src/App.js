@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles.css';
+import { useState, useEffect } from 'react';
+import Header from './components/Header';
+import Gallery from './components/Gallery';
+import ControlCenter from './components/ControlCenter';
+import FilmStrip from './components/FilmStrip';
+import Footer from './components/Footer';
+
 
 function App() {
+
+  const [endpoint, setEndpoint] = useState({name: "Kate Winslet", id: "nm0001234"})
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header endpoint={endpoint} />
+      <Gallery />
+      <ControlCenter />
+      <FilmStrip  actor="Gabe Kaplan"/>
+      <Footer />
     </div>
   );
 }

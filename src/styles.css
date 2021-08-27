@@ -1,0 +1,62 @@
+/* GLOBAL SETTINGS */
+:root {
+    font-size: 10px;
+}
+
+/* MAIN STRUCTURE */
+.structure-div {
+    padding: 20px 40px;
+}
+
+#header {
+    background: orange;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#gallery {
+    background: red;
+}
+
+#control-center {
+    background: yellowgreen;
+}
+
+#film-strip {
+    background: plum;
+}
+
+#footer {
+    background: gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* TYPOGRAPHY */
+p { 
+    font-size: 1.6rem;
+}
+
+
+/* HEADER */
+/* HEADER -- LOGO */
+/* HEADER -- OPTIONS */
+/* GALLERY */
+/* CONTROL CENTER */
+/* FILM STRIP */
+#film-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* FILM STRIP -- CARDS */
+.film-card {
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+/* FOOTER */
+/* FOOTER -- LINKS */
+/* FOOTER -- CREDITS */
