@@ -1,14 +1,21 @@
+
+
 function Footer(props) {
     return (
         <footer id="footer" className="structure-div">
-            <div className="credits">
-                made with heart + muscle + brain by blake montgomery, 2021
+
+            <div className="credits">      
+                <p>made with </p>
+                <i className="fas fa-heart"></i>
+                <p> + </p>
+                <i className="fas fa-brain"></i>
+                <p> by blake montgomery</p>
             </div>
             <div className="links">
-                <div className="icon-circle">LinkedIn</div>
-                <div className="icon-circle">GitHub</div>
-                <div className="icon-circle">Email</div>
-            </div>
+                <i className="fab fa-linkedin-in"></i>
+                <i className="fab fa-github"></i>
+                <i className="fas fa-envelope"></i>                
+            </div>            
         </footer>
     )
 }

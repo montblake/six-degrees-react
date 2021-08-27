@@ -1,18 +1,28 @@
 import FilmCard from "./FilmCard";
+import { useEffect, useState } from 'react';
+
 
 function FilmStrip(props) {
+
+    const [filmography, setFilmography] = useState(null)
+
+    useEffect(() => {
+        setFilmography(props.actor.filmography);
+    }, []);
+    
+    const renderFilms = () => {
+        return props.actor.filmography.map(film => (
+            <FilmCard film={film} key={film.id}/>
+        ));
+    }
+    
+
     return (
-        <div id="film-strip" className="structure-div">
-            FilmStrip
+        <div id="film-strip">
             <div id="film-container">
-                <FilmCard title="This Film!"/>
-                <FilmCard title="That Film!"/>
-                <FilmCard title="The Film!"/>
-                <FilmCard title="Thy Film!"/>
-                <FilmCard title="Third Film!"/>
-                <FilmCard title="Tenth Film!"/>
+                { filmography ?  renderFilms() : "Loading..." }
             </div>
-            <h3>The Films of { props.actor }</h3>
+            <h3>The Films of { props.actor.name }</h3>
         </div>
     )
 }
