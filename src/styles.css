@@ -37,38 +37,36 @@ body {
     background: black;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
     border-bottom: 1px solid var(--accent-color);
     height: 10vh;
 }
 
 #gallery {
-    background: rgba(255,255,255, .1);
+    /* background: rgba(255,255,255, .1); */
+    background: #222;
+    width: 100%;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+#film-strip {
+    /* background: rgba(255,255,255, .1); */
+    background: black;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     border-bottom: 1px solid var(--accent-color);
 }
 
 #control-center {
-    background: rgba(255,255,255, .1);
-    height: 30vh;
-    width: 60%;
-    margin: 24px 48px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    border: 1px solid var(--accent-color);
-}
-
-#film-strip {
-    background: rgba(255,255,255, .1);
+    /* background: rgba(255,255,255, .1); */
+    background: #222;
+    height: 26vh;
     width: 100%;
-    position: absolute;
-    bottom: 5vh; left: 0;
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
 }
@@ -89,11 +87,23 @@ body {
 p { 
     font-size: 1.6rem;
 }
-
+h1 {
+    font-size:3.2rem;
+}
 
 /* HEADER */
 /* HEADER -- LOGO */
+.logo {
+    display: flex;
+    align-items: flex-end;
+}
 /* HEADER -- OPTIONS */
+.options {
+    display: flex;
+    align-items: flex-start;
+    height: 7vh;
+}
+
 button {
     background: var(--accent-color);
     color: black;
@@ -104,7 +114,15 @@ button {
     border: none;
     border-radius: .8rem;
 }
+
 /* GALLERY */
+#choice-map {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
  .actor-pic {
      background: black;
      width: 140px;
@@ -119,18 +137,58 @@ button {
      justify-content: center;
      align-items: center;
      overflow: hidden;
-     border: 1px solid var(--white-shade);
+     border: 1px solid #999;
  }
 
  .actor-card p {
      margin: .6rem 0;
      font-size: 1rem;
  }
+
+#scoreboard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+.scoreboard-component {
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
 /* CONTROL CENTER */
 
 .actor-form {
-    border: 1px solid orange;
+    margin: 40px 40px;
+    width: 380px;
+    text-align: center;
+}
+
+.actor-form form input[type=text] {
+    text-align: center;
     padding: 24px;
+    width: 300px;
+    background: #333;
+    border: none;
+    margin-bottom: 2.4rem;
+    color: #ccc
+
+}
+
+.actor-form form input[type=submit] {
+    background:var(--accent-color);
+    color: black;
+    padding: .4rem 1.2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: .8rem;
+    margin-bottom: 1.2rem; 
+    
+}
+
+.random-btn {
+    margin-top: 1.2rem;
 }
 
 /* FILM STRIP */
@@ -139,38 +197,69 @@ button {
     height: 100%;
     display: grid;
     grid-auto-flow: column;
-    gap: .6rem;
+    gap: 1rem;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     position: relative;
+    margin-bottom: 30px;
 }
 
 #film-strip > h3 {
     padding: 1.2rem 48px;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    font-weight:200;
+    text-transform: uppercase;
 }
 
 
 /* FILM STRIP -- CARDS */
 .film-card {
-    background: var(--accent-color);
-    padding: 20px;
+    /* background: var(--accent-color); */
+    background: rgba(255,255,255,0.25);
     display: flex;
     flex-direction: column;
-    width: 240px;
+    position: relative;
+    width: 180px;
+    height: 320px;
+    padding: 10px 20px;
+    z-index: 10;
+    color: whitesmoke;
+    border: 1px solid #666;
 }
 
 .picture-frame {
-    width: 180px;
-    height: 240px;
+    width: 140px;
+    height: 200px;
+    position: absolute;
+    top: 50px; left: 20px;
+    z-index: 10;
     overflow: hidden;
+    border: 1px solid #999;
 }
 
 .picture-movie {
-    width: 180px;
+    width: 140px;
     height: auto;
+    
+
 }
 
+.film-card ul {
+    list-style: none;
+    position: absolute;
+    top: 255px;
+    left: 20px;
+    z-index: 20;
+}
+
+.film-card h2 {
+    font-size: 1.2rem;
+}
+
+.film-card p {
+    font-size: .8rem;
+}
 
 /* FOOTER */
 /* FOOTER -- LINKS */
@@ -178,11 +267,11 @@ button {
     color:var(--white-shade);
     display: flex;
     justify-content: space-between;
-    font-size: 2.8rem;
+    font-size: 2rem;
 }
 
 .links > i {
-    margin-left: .6rem;
+    margin-left: 1rem;
 }
 
 
@@ -195,7 +284,8 @@ button {
 }
 
 .credits > p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--accent-color);
     margin: 0 .6rem;
+    text-transform: uppercase;
 }

@@ -8,7 +8,7 @@ function Header(props) {
             <div className="options">
                 <button>Replace { props.endpoint.name.split(' ')[0] }</button>
                 <button>Change Color</button>
-                <button>Undo Last</button>
+                {/* <button>Undo Last</button> */}
                 <button>Reset All</button>
             </div>
         </header>

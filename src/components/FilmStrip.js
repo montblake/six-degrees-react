@@ -1,28 +1,29 @@
 import FilmCard from "./FilmCard";
-import { useEffect, useState } from 'react';
 
 
 function FilmStrip(props) {
 
-    const [filmography, setFilmography] = useState(null)
-
-    useEffect(() => {
-        setFilmography(props.actor.filmography);
-    }, []);
     
     const renderFilms = () => {
         return props.actor.filmography.map(film => (
-            <FilmCard film={film} key={film.id}/>
+            <FilmCard 
+                film={film} 
+                key={film.id} 
+                getActorByName={props.getActorByName}
+                updateProgress={props.updateProgress}
+                getFeaturedCast={props.getFeaturedCast}
+            /> 
         ));
     }
     
 
     return (
         <div id="film-strip">
+            <h3>The Films of { props.actor.name } ({props.actor.filmography.length})</h3>
             <div id="film-container">
-                { filmography ?  renderFilms() : "Loading..." }
+                { props.actor.filmography ?  renderFilms() : "Loading..." }
             </div>
-            <h3>The Films of { props.actor.name }</h3>
+            
         </div>
     )
 }

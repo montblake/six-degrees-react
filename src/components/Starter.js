@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function ActorForm(props) {
+function Starter(props) {
     const [inputForm, setInputForm] = useState({inputName: ""})
 
     function handleSubmit(event){
@@ -22,14 +22,15 @@ function ActorForm(props) {
 
     return (
         <div className="actor-form">
-            <h2>Starting Line</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="inputName" placeholder="Enter name to begin search" onChange={handleChange} value={inputForm.inputName}></input>
-                <input type="submit" value="submit"></input>
+                <input type="text" name="inputName" placeholder="Enter an actor's name to begin" onChange={handleChange} value={inputForm.inputName}></input><br></br>
+                <input type="submit" value="submit your choice"></input>
+                <p>OR</p>
+                <button onClick={handleRandom} className="random-btn">begin with an actor picked at random</button>
             </form>
-            <button onClick={handleRandom}>Start with Random Choice</button>
+            
         </div>
     )
 }
 
-export default ActorForm;
+export default Starter;

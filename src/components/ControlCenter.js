@@ -1,11 +1,10 @@
-import Instructions from "./Instructions";
-import ActorForm from "./ActorForm";
+import Progress from "./CCProgress";
 
 function ControlCenter(props) {
     return (
         <div id="control-center" className="structure-div">
-            <Instructions />
-            <ActorForm getActorByName={props.getActorByName} getActorByRandom={props.getActorByRandom}/>
+            <Progress endpoint = {props.endpoint} progressArray={props.progressArray} />
+           
         </div>
     )
 }
