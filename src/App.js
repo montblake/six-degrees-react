@@ -10,7 +10,7 @@ import Starter from './components/Starter';
 
 function App() {
 	// const URL = "http://localhost:5000/";
-	const URL="https://new-flask-backend-detectives.herokuapp.com/";
+	const URL="https://six-degrees-flask.herokuapp.com/";
 
 	const [endpoint, setEndpoint] = useState({
 		name: "Kevin Bacon",
