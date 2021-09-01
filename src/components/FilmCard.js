@@ -1,17 +1,13 @@
-function FilmCard(props) {
+import { useState } from 'react';
 
-    function handleClick(event) {
-        let actor_name = event.target.innerText;
-        let film_title = event.target.closest('div').firstChild.innerText
-        props.getActorByName(actor_name);
-        // props.updateProgress(actor_name, film_title);
-    }
-    
+function FilmCard(props) {    
 
-    const castMembers = () => {
-        let cast = props.film.featured_cast.split(', ');
+    const [showCast, setShowCast] = useState(false);
+
+    const castMembers = () => {    
+        const cast = props.film.featured_cast.split(', ');
         return cast.map(castMember => (
-            <li key={castMember} onClick={handleClick} >{castMember}</li>
+                <li key={castMember} onClick={props.handleClick} >{castMember}</li>
         ))
     }
     
@@ -19,16 +15,28 @@ function FilmCard(props) {
         props.getFeaturedCast(film.id);
     }
 
+    function toggleCast(event) {
+        setShowCast(!showCast);
+    }
+
     return (
         <div className="film-card">
             <h2 id="film-title">{props.film.title}</h2>
             <p className="film-year">{props.film.year}</p>
-            <div className="picture-frame">
-                <img className="picture-movie" src={props.film.image_url} alt={props.film.title} />
-            </div>
-            <ul>
-                { props.film.featured_cast ? castMembers() : "loading cast"}
-            </ul>
+            { showCast ? 
+                <div className="cast">
+                    <h4>Cast</h4>
+                    <ul>
+                        { props.film.featured_cast ? castMembers() : "loading cast"}
+                    </ul>
+                    <button className="cast-close-btn" onClick={toggleCast} >close cast list</button>
+                </div>
+            :
+                <div className="picture-frame" onClick={toggleCast}>
+                    <img className="picture-movie" src={props.film.image_url} alt={props.film.title} />
+                </div>
+            } 
+                        
         </div>
     )
 }

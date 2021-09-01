@@ -12,6 +12,7 @@ function FilmStrip(props) {
                 getActorByName={props.getActorByName}
                 updateProgress={props.updateProgress}
                 getFeaturedCast={props.getFeaturedCast}
+                handleClick={props.handleClick}
             /> 
         ));
     }
@@ -19,9 +20,10 @@ function FilmStrip(props) {
 
     return (
         <div id="film-strip">
+
             <h3>The Films of { props.actor.name } ({props.actor.filmography.length})</h3>
             <div id="film-container">
-                { props.actor.filmography ?  renderFilms() : "Loading..." }
+                   { props.actor.filmography ?  renderFilms() : "Loading..." }
             </div>
             
         </div>

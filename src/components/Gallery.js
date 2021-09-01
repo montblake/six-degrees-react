@@ -1,12 +1,11 @@
 import ActorCard from './ActorCard';
-import Scoreboard from './Scoreboard';
+import ControlCenter from './ControlCenter';
+
 
 function Gallery(props) {
     return (
         <div id="gallery" className="structure-div">
             
-            <Scoreboard actorIndex={props.actorIndex} winner={props.winner} />
-
             <div id="choice-map">
                 <ActorCard actor={props.actorObject[0]}/>
                 <ActorCard actor={props.actorObject[1]}/>
@@ -16,6 +15,9 @@ function Gallery(props) {
                 <ActorCard actor={props.actorObject[5]}/>
                 <ActorCard actor={props.endpoint}/>
             </div>
+            {
+				<ControlCenter getActorByName = {props.getActorByName} getActorByRandom = {props.getActorByRandom} endpoint = {props.endpoint} historyArray = {props.historyArray} actorIndex = {props.actorIndex} winner={props.winner} /> 
+			}
 
         </div>
     )

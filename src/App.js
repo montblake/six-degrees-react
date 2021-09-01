@@ -2,10 +2,10 @@ import './styles.css';
 import { useState } from 'react';
 import Header from './components/Header';
 import Gallery from './components/Gallery';
-import ControlCenter from './components/ControlCenter';
 import FilmStrip from './components/FilmStrip';
 import Footer from './components/Footer';
 import Starter from './components/Starter';
+import History from './components/History';
 
 
 function App() {
@@ -63,7 +63,7 @@ function App() {
 		}
 	});
 
-	const [progArr, setProgArr] = useState([{
+	const [historyArr, setHistoryArr] = useState([{
 			actorA: "",
 			actorB: "",
 			film: ""
@@ -113,7 +113,20 @@ function App() {
 
 	
 	function updateProgress(actor_name, film_title) {
-		console.log('updating progress');
+		if (actorIndex.count === 0) return;
+		if (actorIndex.count === 1) {
+			historyArr[0].actorB = actorObject[0].name;
+			historyArr[1].actorA = actorObject[0].name;
+			historyArr[1].actorB = actor_name;
+			historyArr[1].film = film_title;
+			historyArr[2].actorA = actor_name;
+		} else {
+			historyArr[actorIndex.count].actorB = actor_name;
+			historyArr[actorIndex.count + 1].actorA = actor_name;
+			historyArr[actorIndex.count].film = film_title;
+		}
+	
+		console.log('updating progress:', actor_name, film_title);
 	}
 
 
@@ -135,7 +148,6 @@ function App() {
 			}));
 
 			checkForWinner(data.id);
-
 			setActorIndex({count: actorIndex.count + 1});
 		}
 	}
@@ -165,7 +177,7 @@ function App() {
         let actor_name = event.target.innerText;
         let film_title = event.target.closest('div').firstChild.innerText
         getActorByName(actor_name);
-        // props.updateProgress(actor_name, film_title);
+        updateProgress(actor_name, film_title);
     }
 
 	function checkForWinner(id) {
@@ -183,25 +195,39 @@ function App() {
 	return ( 
 		<div className = "App" >
 			<Header endpoint = {endpoint}/> 
-			<Gallery 
-				endpoint = {endpoint}
-				actorObject = {actorObject}
-				actorIndex = {actorIndex}
-				winner = {winner}
-			/> 
 			{
 				actorIndex.count === 0 ?
-				<> </> 
+				<main>
+					<Starter 
+						getActorByName = {getActorByName} 
+						getActorByRandom = {getActorByRandom}
+					/> 
+				</main>
 				: 
-				<FilmStrip actor = {actorObject[actorIndex.count - 1]} getFeaturedCast = {getFeaturedCast} getActorByName = {getActorByName} updateProgress ={updateProgress} /> 
+				<main>
+					<Gallery 
+						endpoint = {endpoint}
+						actorObject = {actorObject}
+						actorIndex = {actorIndex}
+						winner = {winner}
+						historyArray = {historyArr}
+					/>
+					<FilmStrip 
+						actor = {actorObject[actorIndex.count - 1]} 
+						getFeaturedCast = {getFeaturedCast} 
+						getActorByName = {getActorByName}
+						handleClick={handleClick} 
+					/> 
+					<History 
+						endpoint = {endpoint} 
+						historyArray={historyArr} 
+						actorIndex = {actorIndex} 
+					/>
+				</main>
+				
 			} 
 
-			{
-				actorIndex.count === 0 ?
-				<Starter getActorByName = {getActorByName} getActorByRandom = {getActorByRandom} /> 
-				: 
-				<ControlCenter getActorByName = {getActorByName} getActorByRandom = {getActorByRandom} endpoint = {endpoint} progressArray = {progArr} /> 
-			}
+			
 
 			<Footer />
 		</div>

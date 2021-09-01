@@ -48,27 +48,24 @@ body {
     background: #222;
     width: 100%;
     border-bottom: 1px solid var(--accent-color);
+    height: 22.5vh
 }
 
 #film-strip {
-    /* background: rgba(255,255,255, .1); */
     background: black;
+    height: 35vh;
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
-    justify-content: space-between;
     border-bottom: 1px solid var(--accent-color);
 }
 
-#control-center {
-    /* background: rgba(255,255,255, .1); */
-    background: #222;
-    height: 26vh;
+#history {
     width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    height: 25vh;
+    background: #222;
 }
 
 #footer {
@@ -80,7 +77,7 @@ body {
     width: 100%;
     bottom: 0; left: 0;
     border-top: 1px solid var(--accent-color);
-    height: 5vh;
+    height: 7.5vh;
 }
 
 /* TYPOGRAPHY */
@@ -125,17 +122,17 @@ button {
 
  .actor-pic {
      background: black;
-     width: 140px;
-     height: 180px;
+     width: 120px;
+     height: auto;
  }
 
  .actor-frame {
      background: black;
      width: 100px;
-     height: 100px;
+     height: 140px;
      display: flex;
      justify-content: center;
-     align-items: center;
+     align-items: flex-start;
      overflow: hidden;
      border: 1px solid #999;
  }
@@ -145,19 +142,195 @@ button {
      font-size: 1rem;
  }
 
+
+/* CONTROL CENTER , NOW PART OF GALLERY*/
+#control-center {
+    /* background: #222; */
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 1.6rem 0 0 0;
+}
+
 #scoreboard {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.2rem;
+    width: 50%;
+    background: black;
+    padding: 1rem 2rem;
 }
 
 .scoreboard-component {
     text-transform: uppercase;
-    color: var(--accent-color);
+    color: var(--white-shade);
 }
 
-/* CONTROL CENTER */
+/* HISTORY DETAILS */
 
+
+#history > ol {
+    margin: 0;
+    padding: 0;
+}
+
+#history > ol > li {
+    margin: 0 0 1.2rem 1.2rem;
+    padding: 0;
+}
+
+#history > h3 {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    font-weight:200;
+    text-transform: uppercase;
+    margin: 1rem 0;
+}
+
+.film-title {
+    font-style: italic;
+}
+
+#progress {
+    width: 50%;
+    margin-right: 1.2rem;
+    
+}
+
+#progress > h3 {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    font-weight:200;
+    text-transform: uppercase;
+}
+
+#progress > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#progress > ul > li {
+    margin: 0 0 1.2rem 0;
+    padding: 0;
+}
+
+/* FILM STRIP */
+#film-container {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+#film-strip > h3 {
+    padding: 1.2rem 48px;
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    font-weight:200;
+    text-transform: uppercase;
+}
+
+
+/* FILM STRIP -- CARDS */
+.film-card {
+    /* background: var(--accent-color); */
+    background: rgba(255,255,255,0.25);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 180px;
+    height: 280px;
+    padding: 1rem 1.6rem;
+    z-index: 10;
+    color: whitesmoke;
+    border: 1px solid #666;
+}
+
+.picture-frame {
+    width: 145px;
+    height: 200px;
+    position: absolute;
+    top: 50px; left: 1.6rem;
+    z-index: 10;
+    overflow: hidden;
+    border: 1px solid #999;
+}
+
+.picture-movie {
+    width: 145px;
+    height: auto;
+    
+
+}
+
+.film-card ul {
+    list-style: none;
+}
+
+.film-card h2 {
+    font-size: 1.2rem;
+}
+
+.film-card p {
+    font-size: .8rem;
+}
+
+.cast {
+    margin-top: 2.4rem;
+}
+
+.cast h4 {
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: .2rem;
+}
+
+.cast li {
+    font-size: 1rem;
+}
+
+.cast-close-btn {
+    position: absolute;
+    bottom: 3.2rem;
+
+}
+/* FOOTER */
+/* FOOTER -- LINKS */
+.links {
+    color:var(--white-shade);
+    display: flex;
+    justify-content: space-between;
+    font-size: 3.2rem;
+}
+
+.links > i {
+    margin-left: 1rem;
+}
+
+
+/* FOOTER -- CREDITS */
+.credits {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-left: -.6rem;
+}
+
+.credits > p {
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin: 0 .6rem;
+    text-transform: uppercase;
+}
+
+
+/* SPECIAL STARTER SECTION */
 .actor-form {
     margin: 40px 40px;
     width: 380px;
@@ -189,103 +362,4 @@ button {
 
 .random-btn {
     margin-top: 1.2rem;
-}
-
-/* FILM STRIP */
-#film-container {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    position: relative;
-    margin-bottom: 30px;
-}
-
-#film-strip > h3 {
-    padding: 1.2rem 48px;
-    font-size: 1.4rem;
-    color: var(--accent-color);
-    font-weight:200;
-    text-transform: uppercase;
-}
-
-
-/* FILM STRIP -- CARDS */
-.film-card {
-    /* background: var(--accent-color); */
-    background: rgba(255,255,255,0.25);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 180px;
-    height: 320px;
-    padding: 10px 20px;
-    z-index: 10;
-    color: whitesmoke;
-    border: 1px solid #666;
-}
-
-.picture-frame {
-    width: 140px;
-    height: 200px;
-    position: absolute;
-    top: 50px; left: 20px;
-    z-index: 10;
-    overflow: hidden;
-    border: 1px solid #999;
-}
-
-.picture-movie {
-    width: 140px;
-    height: auto;
-    
-
-}
-
-.film-card ul {
-    list-style: none;
-    position: absolute;
-    top: 255px;
-    left: 20px;
-    z-index: 20;
-}
-
-.film-card h2 {
-    font-size: 1.2rem;
-}
-
-.film-card p {
-    font-size: .8rem;
-}
-
-/* FOOTER */
-/* FOOTER -- LINKS */
-.links {
-    color:var(--white-shade);
-    display: flex;
-    justify-content: space-between;
-    font-size: 2rem;
-}
-
-.links > i {
-    margin-left: 1rem;
-}
-
-
-/* FOOTER -- CREDITS */
-.credits {
-    display: flex;
-    align-items: center;
-    font-size: 1.8rem;
-    margin-left: -.6rem;
-}
-
-.credits > p {
-    font-size: 1rem;
-    color: var(--accent-color);
-    margin: 0 .6rem;
-    text-transform: uppercase;
 }

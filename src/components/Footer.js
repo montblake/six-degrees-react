@@ -7,7 +7,7 @@ function Footer(props) {
             <div className="credits">      
                 <p>made with </p>
                 <i className="fas fa-heart"></i>
-                <p> + </p>
+                <p>and</p>
                 <i className="fas fa-brain"></i>
                 <p> by blake montgomery</p>
             </div>
