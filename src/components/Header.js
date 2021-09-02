@@ -1,4 +1,14 @@
 function Header(props) {
+
+    function handleChangeRequest(event){
+        event.preventDefault();
+        props.changeEndpoint();
+    }
+
+    function handleReset(){
+        window.location.reload(false);
+    }
+
     return (
         <header id="header" className="structure-div">
             <div className="logo">
@@ -6,10 +16,10 @@ function Header(props) {
                 <i className="fas fa-brain-circuit"></i>
             </div>
             <div className="options">
-                <button>Replace { props.endpoint.name.split(' ')[0] }</button>
+                <button onClick={handleChangeRequest}>Replace { props.endpoint.name.split(' ')[0] }</button>
                 {/* <button>Change Color</button> */}
                 {/* <button>Undo Last</button> */}
-                <button>Reset All</button>
+                <button onClick={handleReset}>Reset All</button>
             </div>
         </header>
     )

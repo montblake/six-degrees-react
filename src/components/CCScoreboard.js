@@ -1,32 +1,34 @@
 import Countdown from "./Countdown";
+import { useState } from 'react';
 
 function Scoreboard(props) {
+    const [timeRemaining, setTimeRemaining] = useState(true);
+
     let gs=""
     if (props.winner) {
         gs ="Winner!!!"
     } else {
-        if (props.actorIndex.count === 0) gs = "Ready to Play";
-        if (props.actorIndex.count > 0 && props.actorIndex.count < 6) gs = "In Play";
-        if (props.actorIndex.count >= 6) gs = "Loser!!!";
+        if (props.actorIndex.count > 0 && props.actorIndex.count < 6 && timeRemaining) gs = "In Play";
+        if (props.actorIndex.count >= 6 || timeRemaining === false) gs = "Loser!!!";
     }
 
-    
+    function timesUp(){
+        setTimeRemaining(false);
+    }
     
 
     return (
         <div id="scoreboard">
-            <Countdown />
-            <div id="game-state" className="scoreboard-component">
-                
-                GAME STATE: { gs }
-                
-            </div>
+            <Countdown timeRemaining={timeRemaining} timesUp={timesUp} />
+    
             
             <div id="separation-degree" className="scoreboard-component">
-                Degrees Separation: {props.actorIndex.count}
+                <h3>Degrees<br/>Separation</h3>
+                <p>{props.actorIndex.count}</p>
             </div>
             <div id="remaining-guess" className="scoreboard-component">
-                Remaining Guesses: {6 - props.actorIndex.count}
+                <h3>Chances<br/>Remaining</h3>
+                <p>{6 - props.actorIndex.count}</p>
             </div>
         </div>
     )

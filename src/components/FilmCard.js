@@ -7,7 +7,7 @@ function FilmCard(props) {
     const castMembers = () => {    
         const cast = props.film.featured_cast.split(', ');
         return cast.map(castMember => (
-                <li key={castMember} onClick={props.handleClick} >{castMember}</li>
+                <li key={castMember} onClick={props.handleCastClick} >{castMember}</li>
         ))
     }
     

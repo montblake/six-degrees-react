@@ -5,7 +5,7 @@
 :root {
     font-size: 10px;
     --accent-color: orange;  
-    --white-shade: whitesmoke; 
+    --white-shade: #ddd; 
 }
 
 * {
@@ -23,14 +23,14 @@ body {
     background-color: black;
     background-image: url(./images/bacon_img.jpeg);
     background-repeat: no-repeat;
-    background-position: right 200px;
+    background-position: right 0;
     background-size: cover;
     text-align: left;
     overflow: hidden;
 }
 
 .structure-div {
-    padding: 12px 48px;
+    padding: 2.4rem 4.8rem;
 }
 
 #header {
@@ -48,7 +48,9 @@ body {
     background: #222;
     width: 100%;
     border-bottom: 1px solid var(--accent-color);
-    height: 22.5vh
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
 }
 
 #film-strip {
@@ -83,9 +85,11 @@ body {
 /* TYPOGRAPHY */
 p { 
     font-size: 1.6rem;
+    color: var(--white-shade);
 }
 h1 {
     font-size:3.2rem;
+    color: var(--white-shade);
 }
 
 /* HEADER */
@@ -140,36 +144,75 @@ button {
  .actor-card p {
      margin: .6rem 0;
      font-size: 1rem;
+     color: var(--white-shade);
  }
+
+ .mystery-card {
+     filter: grayscale(100%);
+     opacity: 25%;
+     color: red;
+ }
+
+
+ 
 
 
 /* CONTROL CENTER , NOW PART OF GALLERY*/
 #control-center {
     /* background: #222; */
-    width: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    margin: 1.6rem 0 0 0;
+    justify-content: flex-start;
+    margin: 3.2rem 0 0 0;
+}
+
+#control-center h3 {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    font-weight: 200;
+    text-transform: uppercase;
 }
 
 #scoreboard {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.2rem;
-    width: 50%;
-    background: black;
-    padding: 1rem 2rem;
 }
 
-.scoreboard-component {
-    text-transform: uppercase;
-    color: var(--white-shade);
+#scoreboard p {
+    font-size: 3rem;
 }
+
+#clock,
+#separation-degree,
+#remaining-guess,
+#progress {
+    border: 1px solid var(--accent-color);
+    padding: .6rem 1.2rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 8vh;
+}
+
+#clock {
+    width: 150px;
+}
+
+#progress > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#progress > ul > li {
+    margin: 0 0 .2rem 0;
+    padding: 0;
+}
+
 
 /* HISTORY DETAILS */
-
-
 #history > ol {
     margin: 0;
     padding: 0;
@@ -192,29 +235,7 @@ button {
     font-style: italic;
 }
 
-#progress {
-    width: 50%;
-    margin-right: 1.2rem;
-    
-}
 
-#progress > h3 {
-    font-size: 1.4rem;
-    color: var(--accent-color);
-    font-weight:200;
-    text-transform: uppercase;
-}
-
-#progress > ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-#progress > ul > li {
-    margin: 0 0 1.2rem 0;
-    padding: 0;
-}
 
 /* FILM STRIP */
 #film-container {
@@ -248,7 +269,7 @@ button {
     height: 280px;
     padding: 1rem 1.6rem;
     z-index: 10;
-    color: whitesmoke;
+    color: var(--white-shade);
     border: 1px solid #666;
 }
 
@@ -295,6 +316,15 @@ button {
     font-size: 1rem;
 }
 
+.cast li:hover {
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+.cast li:active {
+    text-decoration: underline;
+}
+
 .cast-close-btn {
     position: absolute;
     bottom: 3.2rem;
@@ -303,7 +333,7 @@ button {
 /* FOOTER */
 /* FOOTER -- LINKS */
 .links {
-    color:var(--white-shade);
+    color: var(--white-shade);
     display: flex;
     justify-content: space-between;
     font-size: 3.2rem;
@@ -317,15 +347,16 @@ button {
 /* FOOTER -- CREDITS */
 .credits {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     font-size: 1.8rem;
     margin-left: -.6rem;
+    color: var(--white-shade);
 }
 
 .credits > p {
     font-size: 1rem;
-    color: var(--accent-color);
-    margin: 0 .6rem;
+    color: var(--white-shade);
+    margin: 0 .4rem;
     text-transform: uppercase;
 }
 
@@ -333,18 +364,23 @@ button {
 /* SPECIAL STARTER SECTION */
 .actor-form {
     margin: 40px 40px;
-    width: 380px;
-    text-align: center;
+    padding:  10px;
+    background:rgba(0,0,0,0.5);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .actor-form form input[type=text] {
     text-align: center;
-    padding: 24px;
-    width: 300px;
+    width: 100%;
+    padding: 12px 24px;
     background: #333;
     border: none;
     margin-bottom: 2.4rem;
-    color: #ccc
+    color: var(--white-shade);
 
 }
 
@@ -360,6 +396,28 @@ button {
     
 }
 
+.actor-form p {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    margin-bottom: 1.4rem;
+    font-weight: 200;
+    color: var(--white-shade);
+}
+
+.actor-form p span {
+    font-style: italic;
+}
+
 .random-btn {
     margin-top: 1.2rem;
+}
+
+.actor-form section {
+    margin-bottom: 3.6rem;
+}
+
+#start-choice, #start-random {
+    border: 1px solid #666;
+    padding: 20px;
+    background:rgba(0,0,0,1);
 }
