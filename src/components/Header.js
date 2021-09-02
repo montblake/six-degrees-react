@@ -6,7 +6,7 @@ function Header(props) {
     }
 
     function handleReset(){
-        window.location.reload(false);
+        props.resetGame();
     }
 
     return (

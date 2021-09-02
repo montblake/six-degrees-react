@@ -11,9 +11,9 @@ function FilmCard(props) {
         ))
     }
     
-    async function handleNoCast(film){
-        props.getFeaturedCast(film.id);
-    }
+    // async function handleNoCast(film){
+    //     props.getFeaturedCast(film.id);
+    // }
 
     function toggleCast(event) {
         setShowCast(!showCast);

@@ -118,24 +118,28 @@ function App() {
 
 	const [historyArr, setHistoryArr] = useState(histArr);
 
-	const [actorIndex, setActorIndex] = useState({
-		count: 0
-	});
+	const [actorIndex, setActorIndex] = useState(0);
 	
 	const [winner, setWinner] = useState(false);
-
+	const [loser, setLoser] = useState(false);
+	const [timeLeft, setTimeLeft] = useState(true); 
+	const [guessesRemain, setGuessesRemain] = useState(true);
 
 	//////////////////////////////////////////////
 	// FUNCTIONS
 	//////////////////////////////////////////////
 
 	function updateProgress(actor_name, film_title) {
-		if (actorIndex.count === 1) {
+		if (actorIndex === 1) {
 			historyArr[0].actorA = actorObject[0].name;
+		} else if (actorIndex > 1 && actorIndex < 7) {
+			historyArr[actorIndex - 1].actorB = actor_name;
+			historyArr[actorIndex].actorA = actor_name;
+			historyArr[actorIndex -1].film = film_title;
+		} else {
+			setGuessesRemain(false);
 		}
-		historyArr[actorIndex.count - 1].actorB = actor_name;
-		historyArr[actorIndex.count].actorA = actor_name;
-		historyArr[actorIndex.count -1].film = film_title;
+	
 	}
 
 
@@ -148,7 +152,7 @@ function App() {
 
 			setActorObject(prevState => ({
 				...prevState,
-				[actorIndex.count]:{
+				[actorIndex]:{
 					name: data.name,
 					id: data.id,
 					image: data.image_url,
@@ -157,7 +161,7 @@ function App() {
 			}));
 
 			checkForWinner(data.id);
-			setActorIndex({count: actorIndex.count + 1});
+			incrementIndex();
 		}
 	}
 
@@ -166,7 +170,7 @@ function App() {
 		const data = await response.json();
 		setActorObject(prevState => ({
 			...prevState,
-			[actorIndex.count]: {
+			[actorIndex]: {
 				name: data.name,
 				id: data.id,
 				image: data.image_url,
@@ -174,13 +178,21 @@ function App() {
 			}
 		}));
 
-		setActorIndex({count: actorIndex.count + 1});
+		incrementIndex();
 	}
 
 	async function getFeaturedCast(filmId) {
 		console.log('would you like me to get the cast list?');
 		// const response = await fetch(URL + 'getcast/' + filmId);
 		// const data = await response.json();
+	}
+
+	function incrementIndex(){
+		if (actorIndex === 6) {
+			setLoser(true);
+			setGuessesRemain(false);
+		}
+		setActorIndex(actorIndex  + 1);
 	}
 
 	function handleCastClick(event) {
@@ -196,10 +208,9 @@ function App() {
 		if (id === endpoint.id) {
 			console.log('You are a winner!');
 			setWinner(true);
-			return;
+		} else {
+			console.log('Keep trying')
 		}
-		console.log('You have not won yet');
-		return;
 	}
 
 	async function changeEndpoint() {
@@ -211,25 +222,36 @@ function App() {
 			id: data.id,
 			image: data.image_url,
 		})
-		const bodyElem = document.body.style.backgroundImage = `url(${data.image_url})`;
+		document.body.style.backgroundImage = `url(${data.image_url})`;
+	}
+
+	function outOfTime() {
+		setLoser(true);
+		setTimeLeft(false);
+	}
+
+	function handleNoGuesses() {
+		setGuessesRemain(false);
 	}
 
 	function resetGame() {
-		
-		console.log('resetting');
 		setActorIndex(0);
 		setEndpoint(bacon);
 		setActorObject(actObj);
 		setHistoryArr(histArr);
 		setWinner(false);
-		
+		setLoser(false);
+		setGuessesRemain(true);
+		setTimeLeft(true);
+		document.location.reload();
+		window.location.reload(false);
 	}
 
 	return ( 
 		<div className = "App" >
 			<Header endpoint = {endpoint}  changeEndpoint={changeEndpoint} resetGame={resetGame} /> 
 			{
-				actorIndex.count === 0 ?
+				actorIndex === 0 ?
 				<main>
 					<Starter 
 						getActorByName = {getActorByName} 
@@ -244,11 +266,15 @@ function App() {
 						endpoint = {endpoint}
 						actorObject = {actorObject}
 						actorIndex = {actorIndex}
-						winner = {winner}
 						historyArray = {historyArr}
+						outOfTime = {outOfTime}
+						timeLeft={timeLeft}
+						winner = {winner}
+						loser = {loser}
+						guessesRemain = {guessesRemain}
 					/>
 					<FilmStrip 
-						actor = {actorObject[actorIndex.count - 1]} 
+						actor = {actorObject[actorIndex - 1]} 
 						getFeaturedCast = {getFeaturedCast} 
 						getActorByName = {getActorByName}
 						handleCastClick={handleCastClick} 

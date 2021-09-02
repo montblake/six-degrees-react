@@ -13,11 +13,24 @@ function Gallery(props) {
                 <ActorCard actor={props.actorObject[3]} endpoint={props.endpoint} actorIndex={props.actorIndex} index="3" />
                 <ActorCard actor={props.actorObject[4]} endpoint={props.endpoint} actorIndex={props.actorIndex} index="4" />
                 <ActorCard actor={props.actorObject[5]} endpoint={props.endpoint} actorIndex={props.actorIndex} index="5" />
-                <ActorCard actor={props.endpoint} actorIndex={props.actorIndex} index="6" />
+                <ActorCard actor={props.actorObject[6]} endpoint={props.endpoint} actorIndex={props.actorIndex} index="6" />
                 
             </div>
             
-			<ControlCenter getActorByName = {props.getActorByName} getActorByRandom = {props.getActorByRandom} endpoint = {props.endpoint} historyArray = {props.historyArray} actorIndex = {props.actorIndex} actorObject= {props.actorObject} winner={props.winner} /> 
+			<ControlCenter 
+                getActorByName = {props.getActorByName} 
+                getActorByRandom = {props.getActorByRandom} 
+                endpoint = {props.endpoint} 
+                historyArray = {props.historyArray} 
+                actorIndex = {props.actorIndex} 
+                actorObject= {props.actorObject} 
+                winner={props.winner}
+                loser={props.loser}
+                outOfTime={props.outOfTime}
+                timeLeft={props.timeLeft}
+				guessesRemain = {props.guessesRemain}
+            
+            /> 
 			
 
         </div>

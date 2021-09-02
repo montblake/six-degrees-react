@@ -9,8 +9,7 @@ const Countdown = (props) => {
     const tick = () => {
    
         if (hrs === 0 && mins === 0 && secs === 0) {
-            console.log('time is up!');
-            props.timesUp();
+            props.outOfTime();
         } else if (mins === 0 && secs === 0) {
             setTime([hrs - 1, 59, 59]);
         } else if (secs === 0) {
@@ -24,6 +23,8 @@ const Countdown = (props) => {
         const timerId = setInterval(() => tick(), 1000);
         return () => clearInterval(timerId);
     });
+
+    
 
     return (
         <div id="clock">

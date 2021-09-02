@@ -2,9 +2,9 @@ function Progress(props){
     const renderProgress = () => {
         return (
             <ul>
-                <li>{`Browse ${props.actorObject[props.actorIndex.count -1].name}'s filmography.`}</li>
-                <li>Click on movie posters to reveal featured cast.</li>
-                <li>Click on a name to connect to the next actor.</li> 
+                <li><h2>{`Browse ${props.actorObject[props.actorIndex -1].name}'s filmography.`}</h2></li>
+                <li>Click movie posters to reveal featured cast.</li>
+                <li>Click a name to select the actor.</li> 
             </ul>
         )
     }
@@ -12,7 +12,7 @@ function Progress(props){
     return (
         <div id="progress" className="cc-component">
             <h3>Next<br/>Actions</h3>
-            { props.actorIndex.count >= 1 ? renderProgress() : "Loading..." }
+            { props.actorIndex >= 1 ? renderProgress() : "Loading..." }
         </div>
     )
 }

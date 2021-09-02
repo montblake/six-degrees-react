@@ -2,33 +2,27 @@ import Countdown from "./Countdown";
 import { useState } from 'react';
 
 function Scoreboard(props) {
-    const [timeRemaining, setTimeRemaining] = useState(true);
-
-    let gs=""
-    if (props.winner) {
-        gs ="Winner!!!"
-    } else {
-        if (props.actorIndex.count > 0 && props.actorIndex.count < 6 && timeRemaining) gs = "In Play";
-        if (props.actorIndex.count >= 6 || timeRemaining === false) gs = "Loser!!!";
-    }
-
-    function timesUp(){
-        setTimeRemaining(false);
-    }
+    
     
 
     return (
         <div id="scoreboard">
-            <Countdown timeRemaining={timeRemaining} timesUp={timesUp} />
+            { props.timeLeft === true && props.loser === false && props.winner === false ? 
+            <Countdown outOfTime={props.outOfTime} winner={props.winner} loser={props.loser}/>
+            :
+            <></>
+            }
+            
     
             
-            <div id="separation-degree" className="scoreboard-component">
+            {/* <div id="separation-degree" className="scoreboard-component">
                 <h3>Degrees<br/>Separation</h3>
-                <p>{props.actorIndex.count}</p>
-            </div>
+                { props.actorIndex === 1 ? <p>Infinite</p>:<p>{props.actorIndex - 1} and counting</p>}
+                
+            </div> */}
             <div id="remaining-guess" className="scoreboard-component">
                 <h3>Chances<br/>Remaining</h3>
-                <p>{6 - props.actorIndex.count}</p>
+                <p>{7 - props.actorIndex}</p>
             </div>
         </div>
     )
