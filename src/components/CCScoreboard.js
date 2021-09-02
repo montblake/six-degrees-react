@@ -1,10 +1,6 @@
 import Countdown from "./Countdown";
-import { useState } from 'react';
 
 function Scoreboard(props) {
-    
-    
-
     return (
         <div id="scoreboard">
             { props.timeLeft === true && props.loser === false && props.winner === false ? 

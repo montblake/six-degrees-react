@@ -130,16 +130,30 @@ function App() {
 	//////////////////////////////////////////////
 
 	function updateProgress(actor_name, film_title) {
-		if (actorIndex === 1) {
-			historyArr[0].actorA = actorObject[0].name;
-		} else if (actorIndex > 1 && actorIndex < 7) {
-			historyArr[actorIndex - 1].actorB = actor_name;
-			historyArr[actorIndex].actorA = actor_name;
-			historyArr[actorIndex -1].film = film_title;
-		} else {
-			setGuessesRemain(false);
+
+
+		if (actorIndex === 0) return;
+		
+		if (actorIndex === 1){
+			historyArr[0].actorB = actorObject[0].name;
+			historyArr[1].actorA = actorObject[0].name;
+			historyArr[actorIndex].actorB = actor_name;
+			historyArr[actorIndex].film = film_title;
+			historyArr[actorIndex + 1].actorA = actor_name;
 		}
-	
+		
+		if (actorIndex >= 2 && actorIndex < 6) {
+			console.log(actorIndex);
+			console.log(actor_name);
+			console.log(film_title);
+			historyArr[actorIndex].actorB = actor_name;
+			historyArr[actorIndex].film = film_title;
+			historyArr[actorIndex + 1].actorA = actor_name;
+		}	
+		if (actorIndex === 6) {
+			historyArr[actorIndex].actorB = actor_name;
+			historyArr[actorIndex].film = film_title;
+		}	
 	}
 
 
@@ -197,9 +211,11 @@ function App() {
 
 	function handleCastClick(event) {
         let actor_name = event.target.innerText;
-        let film_title = event.target.closest('div .film-card').firstChild.innerText
-        getActorByName(actor_name);
-        updateProgress(actor_name, film_title);
+        let film_title = event.target.closest('div .film-card').firstChild.innerText;
+        console.log(actor_name, film_title);
+		updateProgress(actor_name, film_title);
+		getActorByName(actor_name);
+        
     }
 
 	function checkForWinner(id) {
@@ -228,10 +244,6 @@ function App() {
 	function outOfTime() {
 		setLoser(true);
 		setTimeLeft(false);
-	}
-
-	function handleNoGuesses() {
-		setGuessesRemain(false);
 	}
 
 	function resetGame() {
