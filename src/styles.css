@@ -131,10 +131,23 @@ button:active {
 #choice-map {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: no-wrap;
+    width: 100%;
 }
 
+#choice-map-group {
+    display: flex;
+    flex-direction: row;
+}
+
+#choice-map-endpoint {
+}
+
+.actor-group {
+    display: flex;
+    justify-content: space-between;
+}
 
  .actor-pic {
      background: black;
@@ -151,8 +164,11 @@ button:active {
      align-items: flex-start;
      overflow: hidden;
      border: 1px solid #999;
-     background: red;
  }
+
+ .actor-card {
+     margin-right: 2vw;
+}
 
  .actor-card p {
      margin: .6rem 0;
@@ -163,10 +179,17 @@ button:active {
  .mystery-card {
      filter: grayscale(100%);
      opacity: 25%;
-     color: red;
  }
 
+#choice-map-endpoint .actor-frame {
+    width: 100px;
+    height: 140px;
+}
 
+#choice-map-endpoint .actor-pic {
+    width: 120px;
+    height: auto;
+}
  
 
 
@@ -203,7 +226,6 @@ button:active {
 #results {
     border: 1px solid var(--accent-color);
     padding: .6rem 1.2rem;
-    margin-right: 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -212,7 +234,6 @@ button:active {
 }
 
 #clock {
-    width: 150px;
 }
 
 #progress > ul {
@@ -229,7 +250,6 @@ button:active {
 }
 
 #results {
-    width: 180px;
 }
 
 
@@ -393,18 +413,19 @@ button:active {
 
 /* SPECIAL STARTER SECTION */
 #intro-text {
-    margin-bottom: 36px;
+    margin-bottom: 18px;
 }
 
 .starter {
-    margin: 26px 26px;
-    padding: 2.4rem;
+    margin: 24px;
+    padding: 2.4rem 3.6rem;;
     background:rgba(0,0,0,0.5);
-    max-width: 500px;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+
 }
 
 #start-choice form input[type=text] {
@@ -412,10 +433,9 @@ button:active {
     width: 100%;
     padding: 12px 24px;
     background: #333;
-    border: none;
+    border: 1px solid #444;
     margin-bottom: 1.2rem;
     color: var(--white-shade);
-
 }
 
 #start-choice form input[type=submit] {
@@ -436,6 +456,10 @@ button:active {
 
 #start-choice form input[type=submit]:active {
     box-shadow: 0px 0px 2px 2px var(--white-shade);
+}
+
+#start-random p {
+    margin-bottom: .4rem;
 }
 
 .starter p {
@@ -463,10 +487,125 @@ button:active {
     border: 1px solid #666;
     padding: 20px;
     background:rgba(0,0,0,1);
-    width: 100%;
+    min-width: 240px;
+    width: 50%;
 }
 
 #connector {
     margin: 16px 0;
     color: var(--accent-color);
+}
+
+@media screen and (max-width: 800px) {
+
+    .actor-pic {
+        width: 60px;
+    }
+
+    .actor-frame {
+        width: 50px;
+        height: 70px;
+    }
+
+    .actor-card p {
+        font-size: .6rem;
+    }
+
+    #choice-map-group {
+        flex-direction: column;
+    }
+
+    #choice-map-endpoint .actor-frame {
+        width: 114px;
+        height: 160px;
+    }
+
+    #choice-map-endpoint .actor-pic {
+        width: 138;
+        height: auto;
+    }
+
+    #progress h2 {
+        font-size: 1.4rem;
+    }
+
+    #scoreboard p {
+        font-size: 1.8rem;
+    }
+
+    #scoreboard li {
+        font-size: 1rem;
+    }
+    
+    .structure-div {
+    padding: 1.2rem 2.4rem;
+}
+}
+
+@media screen and (max-width: 600px) {
+
+    .starter {
+        width: 90%;
+        margin: 8px;
+     } 
+     h1 {
+         font-size: 4vw;
+     }
+
+     .links {
+         font-size: 3.2rem;
+     }
+
+     .credits {
+         font-size: 1rem;
+     }
+
+     .credits > p {
+         font-size: 1rem;
+     }
+     #control-center {
+         flex-direction: column;
+     }
+     #clock,
+     #remaining-guess,
+     #results
+      {
+        height: 5vh;
+    } 
+
+    #progress  {
+        height: 8vh;
+    }
+    
+    #progress, #scoreboard {
+        width: 280px;
+        display: flex;
+    }
+
+    #clock, #remaining-guess {
+        width: 50%;
+    }
+
+    #progress h2 {
+        font-size: 1.2rem;
+    }
+
+    #scoreboard p {
+        font-size: 1.4rem;
+    }
+
+    #progress ul li {
+        font-size: 1rem;
+    }
+
+    #control-center h3 {
+        font-size: 1rem;
+    }
+
+    #progress {
+        flex-direction: column;
+    }
+
+
+
 }

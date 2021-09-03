@@ -36,9 +36,8 @@ function Starter(props) {
             <p id="connector">or...</p>
 
             <section id="start-choice">
-                <p>Choose your own actor.</p>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="inputName" placeholder="Enter a name" onChange={handleChange} value={inputForm.inputName}></input><br></br>
+                    <input type="text" name="inputName" placeholder="Choose your own actor..." onChange={handleChange} value={inputForm.inputName}></input><br></br>
                     <input type="submit" value="Begin"></input>
                 </form>
             </section>
