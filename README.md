@@ -47,8 +47,6 @@ Frontend:
 Note: API data (through the backend) can be overtaxed. If you're playing around, the random search button will always pull from the database so is preferable. Also, if just doing design or development adjustments, calling on actors you know are in the db will save the expense of gratuitous calls. 
 
 Backend:
-<br>
-details on installing a local version of the Python backend forthcoming...
 <be>
 1. clone the repository on to your local machine
 1. cd into directory
@@ -57,9 +55,15 @@ details on installing a local version of the Python backend forthcoming...
 <br>
 (on windows machine: venv\Scripts\activate)
 1. pip install -r requirements.txt
+1. create .env file and place in root of app <br>
+this file needs two variables:<br>
+IMDB_KEY=<whatever_your_IMDB_key_is><br>
+OMDB_KEY=<whatever_your_OMDB_key_is>
 1.  flask run <br>
 (starts dev server at localhost:5000)<br>
 (landingpage for the app at /landing)
+
+NOTE: the start game with RANDOM CHOICE will not work at first as it only picks from actors already in the database and the local SQLite db will be empty. Wait times for returned actor information will be high as all actors must do a complete search and build filmography before display. This a good pattern if we are just building the database but a poor choice for playing. Currently, this feature is slated for redevelopment.
 
 
 
