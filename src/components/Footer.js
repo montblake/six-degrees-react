@@ -12,9 +12,9 @@ function Footer(props) {
                 <p> by blake montgomery</p>
             </div>
             <div className="links">
-                <i className="fab fa-linkedin-in"></i>
-                <i className="fab fa-github"></i>
-                <i className="fas fa-envelope"></i>                
+                <a href="https://www.linkedin.com/in/blake-montgomery312/" target="_blank" ><i className="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/montblake" target="_blank"><i className="fab fa-github"></i></a>
+                <a href="mailto:blakemontgomery312@gmail.com"><i className="fas fa-envelope"></i></a>              
             </div>            
         </footer>
     )

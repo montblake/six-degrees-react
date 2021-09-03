@@ -117,6 +117,14 @@ button {
     border-radius: .8rem;
 }
 
+button:hover {
+    font-weight: bold;
+}
+
+button:active {
+    box-shadow: 0px 0px 2px 2px var(--white-shade);
+}
+
 /* GALLERY */
 #choice-map {
     display: flex;
@@ -350,10 +358,18 @@ button {
     font-size: 3.2rem;
 }
 
-.links > i {
+.links > a > i {
     margin-left: 1rem;
+    color: var(--white-shade);
 }
 
+.links > a > i:hover {
+    color: var(--accent-color);
+}
+
+.links > a > i:active {
+    text-decoration: underline;
+}
 
 /* FOOTER -- CREDITS */
 .credits {
@@ -404,7 +420,14 @@ button {
     border: none;
     border-radius: .8rem;
     margin: 0; 
-    
+}
+
+.actor-form form input[type=submit]:hover {
+    font-weight: bold;
+}
+
+.actor-form form input[type=submit]:active {
+    box-shadow: 0px 0px 2px 2px var(--white-shade);
 }
 
 .actor-form p {
@@ -417,9 +440,6 @@ button {
 
 .actor-form p span {
     font-style: italic;
-}
-
-.random-btn {
 }
 
 .actor-form section {
