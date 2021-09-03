@@ -81,6 +81,7 @@ body {
     bottom: 0; left: 0;
     border-top: 1px solid var(--accent-color);
     height: 7.5vh;
+    z-index: 40;
 }
 
 /* TYPOGRAPHY */
@@ -109,6 +110,7 @@ h1 {
 button {
     background: var(--accent-color);
     color: black;
+    width: 120px;
     padding: .4rem 1.2rem;
     font-size: 1rem;
     text-transform: uppercase;
@@ -136,19 +138,20 @@ button:active {
 
  .actor-pic {
      background: black;
-     width: 100px;
+     width: 120px;
      height: auto;
  }
 
  .actor-frame {
      background: black;
-     width: 80px;
+     width: 100px;
      height: 140px;
      display: flex;
      justify-content: center;
      align-items: flex-start;
      overflow: hidden;
      border: 1px solid #999;
+     background: red;
  }
 
  .actor-card p {
@@ -389,19 +392,23 @@ button:active {
 
 
 /* SPECIAL STARTER SECTION */
-.actor-form {
+#intro-text {
+    margin-bottom: 36px;
+}
+
+.starter {
     margin: 26px 26px;
     padding: 2.4rem;
     background:rgba(0,0,0,0.5);
-    width: 400px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 }
 
-.actor-form form input[type=text] {
-    text-align: center;
+#start-choice form input[type=text] {
+    text-align: left;
     width: 100%;
     padding: 12px 24px;
     background: #333;
@@ -411,7 +418,7 @@ button:active {
 
 }
 
-.actor-form form input[type=submit] {
+#start-choice form input[type=submit] {
     background:var(--accent-color);
     color: black;
     padding: .4rem 1.2rem;
@@ -420,25 +427,31 @@ button:active {
     border: none;
     border-radius: .8rem;
     margin: 0; 
+    width: 120px;
 }
 
-.actor-form form input[type=submit]:hover {
+#start-choice form input[type=submit]:hover {
     font-weight: bold;
 }
 
-.actor-form form input[type=submit]:active {
+#start-choice form input[type=submit]:active {
     box-shadow: 0px 0px 2px 2px var(--white-shade);
 }
 
-.actor-form p {
+.starter p {
     font-size: 1.4rem;
-    line-height: 1.8rem;
-    margin-bottom: 1rem;
+    line-height: 2.4rem;
+    margin-bottom: 2.4rem;
     font-weight: 200;
     color: var(--white-shade);
 }
 
-.actor-form p span {
+#citation {
+    margin-bottom: 0;
+    color: var(--accent-color);
+}
+
+.starter span {
     font-style: italic;
 }
 
@@ -451,4 +464,9 @@ button:active {
     padding: 20px;
     background:rgba(0,0,0,1);
     width: 100%;
+}
+
+#connector {
+    margin: 16px 0;
+    color: var(--accent-color);
 }

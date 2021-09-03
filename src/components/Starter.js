@@ -21,21 +21,22 @@ function Starter(props) {
     }
 
     return (
-        <div className="actor-form">
-            <section>
-                <p>Connect an actor with {props.endpoint.name} with six degrees of separation or less. In the context of this game, a connection is made by one actor working with another on a film.</p>
-                <p>Meryl Streep worked with Kevin on the film <span>The River Wild</span>. That's one degree of separation.</p>
-                <p>Queen Latifah worked with Catherine Zeta-Jones on the film <span>Chicago</span>. And Catherine Zeta-Jones worked with Julia Roberts on the film <span>Ocean's Twelve</span>. And Julia Roberts worked with Ed Harris on the film <span>Stepmom</span> and Ed Harris worked with Meryl Streep on <span>The Hours</span>who  worked with Kevin on <span>The River Wild.</span> That is five degrees.</p>
-                <p>It's easier to play than to describe.</p>
+        <div className="starter">
+            <section id="intro-text">
+                <p id="citation">According to <span>Wikipedia</span>:</p>
+                <p>"Six Degrees of {props.endpoint.name}  or {props.endpoint.name.split(' ')[1]} 's Law is a parlor game where players challenge each other to arbitrarily choose an actor and then connect them to another actor via a film that both actors have appeared in together, repeating this process to try and find the shortest path that ultimately leads to prolific American actor Kevin Bacon.</p>
+                <p>It rests on the assumption that anyone involved in the Hollywood film industry can be linked through their film roles to Bacon within six steps.</p>
+                <p>The game's name is a reference to "six degrees of separation", a concept which posits that any two people on Earth are six or fewer acquaintance links apart."</p>
             </section>
 
             <section id="start-random">
-                <p>Start with an actor chosen at random.</p>
+                <p>Let us choose an actor for you.</p>
                 <button onClick={handleRandom} className="random-btn">Begin</button>
             </section>
-           
+            <p id="connector">or...</p>
+
             <section id="start-choice">
-                <p>Start with whomever you choose.</p>
+                <p>Choose your own actor.</p>
                 <form onSubmit={handleSubmit}>
                     <input type="text" name="inputName" placeholder="Enter a name" onChange={handleChange} value={inputForm.inputName}></input><br></br>
                     <input type="submit" value="Begin"></input>
